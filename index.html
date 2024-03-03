@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro 1803104</title>
+</head>
+<body>
+  
+    <h1>Formulario de Registro</h1>
+
+    <div id="messages"></div>
+
+    
+    <form id="registroForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required>
+      
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" id="correo" required>
+
+        <button type="button" onclick="registrarUsuario()">Registrarse</button>
+    </form>
+
+    <h2>Usuarios Registrados</h2>
+    <ul id="usuariosList"></ul>
+
+    <script>
+        // Simulacion de BD
+        var usuarios_registrados = [];
+
+        function validarCorreo(correo) {
+            var patronCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return patronCorreo.test(correo);
+        }
+
+        function registrarUsuario() {
+            var nombre = document.getElementById('nombre').value;
+            var correo = document.getElementById('correo').value;
+
+            // Validación de entrada
+            if (!nombre || !correo) {
+                mostrarMensaje('Por favor, completa todos los campos.', 'error');
+                return;
+            }
+
+            if (!validarCorreo(correo)) {
+                mostrarMensaje('Correo electrónico no válido.', 'error');
+                return;
+            }
+
+            // Codificación segura de salida (escapando HTML)
+            nombre = nombre.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            correo = correo.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+            // Almacenar el usuario (solo para propósitos de demostración)
+            usuarios_registrados.push({ nombre: nombre, correo: correo });
+
+            mostrarMensaje('Registro exitoso.', 'success');
+            actualizarListaUsuarios();
+        }
+
+        function mostrarMensaje(mensaje, tipo) {
+            var messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML = '<div style="color: ' + (tipo === 'error' ? 'red' : 'green') + ';">' + mensaje + '</div>';
+        }
+
+        function actualizarListaUsuarios() {
+            var usuariosList = document.getElementById('usuariosList');
+            usuariosList.innerHTML = '';
+
+            usuarios_registrados.forEach(function(usuario) {
+                var listItem = document.createElement('li');
+                listItem.textContent = usuario.nombre + ' - ' + usuario.correo;
+                usuariosList.appendChild(listItem);
+            });
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro 1803104</title>
+</head>
+<body>
+  
+    <h1>Formulario de Registro</h1>
+
+    <div id="messages"></div>
+
+    
+    <form id="registroForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required>
+      
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" id="correo" required>
+
+        <button type="button" onclick="registrarUsuario()">Registrarse</button>
+    </form>
+
+    <h2>Usuarios Registrados</h2>
+    <ul id="usuariosList"></ul>
+
+    <script>
+        // Simulacion de BD
+        var usuarios_registrados = [];
+
+        function validarCorreo(correo) {
+            var patronCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return patronCorreo.test(correo);
+        }
+
+        function registrarUsuario() {
+            var nombre = document.getElementById('nombre').value;
+            var correo = document.getElementById('correo').value;
+
+            // Validación de entrada
+            if (!nombre || !correo) {
+                mostrarMensaje('Por favor, completa todos los campos.', 'error');
+                return;
+            }
+
+            if (!validarCorreo(correo)) {
+                mostrarMensaje('Correo electrónico no válido.', 'error');
+                return;
+            }
+
+            // Codificación segura de salida (escapando HTML)
+            nombre = nombre.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            correo = correo.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+            // Almacenar el usuario (solo para propósitos de demostración)
+            usuarios_registrados.push({ nombre: nombre, correo: correo });
+
+            mostrarMensaje('Registro exitoso.', 'success');
+            actualizarListaUsuarios();
+        }
+
+        function mostrarMensaje(mensaje, tipo) {
+            var messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML = '<div style="color: ' + (tipo === 'error' ? 'red' : 'green') + ';">' + mensaje + '</div>';
+        }
+
+        function actualizarListaUsuarios() {
+            var usuariosList = document.getElementById('usuariosList');
+            usuariosList.innerHTML = '';
+
+            usuarios_registrados.forEach(function(usuario) {
+                var listItem = document.createElement('li');
+                listItem.textContent = usuario.nombre + ' - ' + usuario.correo;
+                usuariosList.appendChild(listItem);
+            });
+        }
+    </script>
+</body>
+</html>
